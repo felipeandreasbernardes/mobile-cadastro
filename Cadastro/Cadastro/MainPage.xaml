@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Cadastro"
+             x:Class="Cadastro.MainPage">
+    <StackLayout BackgroundColor="#edf0f5" >
+        <Label Text="Criar uma nova conta" FontSize="30" FontAttributes="Bold" Margin="15,15,0,0"/>
+        <Label Text="É gratuito e sempre será." Font="22" Margin="15,0,0,0" />
+        <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+            <StackLayout Orientation="Vertical">
+                <Entry Placeholder="Nome" WidthRequest="200" FontSize="24" Text="{Binding Nome}"/>
+                <Label TextColor="Red" Text="O nome é obrigatório" HorizontalOptions="Start" IsVisible="{Binding MostrarErroNome}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Entry Placeholder="Sobrenome" WidthRequest="200" FontSize="24" Text="{Binding Sobrenome}"/>
+                <Label TextColor="Red" Text="O sobrenome é obrigatório" HorizontalOptions="End" IsVisible="{Binding MostrarErroSobrenome}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <Entry Placeholder="Celular ou Email" FontSize="24" Text="{Binding Email}" Margin="10,0,10,0" />
+        <Label TextColor="Red" Margin="10,0,10,0" Text="O email é obrigatório" WidthRequest="200" IsVisible="{Binding MostrarErroEmail}"/>
+
+        <Entry Placeholder="Senha" Margin="10,0,10,0" FontSize="24" IsPassword="True" Text="{Binding Senha}"/>
+        <Label TextColor="Red" Margin="10,0,10,0" Text="O senha é obrigatório" WidthRequest="200" IsVisible="{Binding MostrarErroSenha}"/>
+
+        <Label Text="Data de Nascimento" FontSize="24" FontAttributes="Bold" Margin="10,0,10,0"/>
+        <StackLayout Orientation="Horizontal">
+            <DatePicker WidthRequest="200" Margin="10,0,10,0"/>
+            <Label Text="Por que preciso informar minha data de nascimento?" TextColor="Blue" Margin="0,0,10,0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Picker x:Name ="pckSexo" Title="Sexo" WidthRequest="200" Margin="10,0,10,0">
+                <Picker.Items>
+                    <x:String>Masculino</x:String>
+                    <x:String>Feminino</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Margin="10,0,10,0" Text="Ao clicar em Cadastre-se, você concorda com os nossos Termos e Política de Dados e Políticas de Cookies. Você pode receber notificações por SMS e pode cancelar isso quando quiser."/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+            <Button Text="Cadastre-se" BackgroundColor="Green" TextColor="White" 
+                    WidthRequest="200" HeightRequest="60" Command="{Binding CadastrarCommand}" >
+                <Button.BorderRadius>
+                    <OnPlatform x:TypeArguments="x:Int32"
+                                Android="8"/>
+                </Button.BorderRadius>
+            </Button>
+        </StackLayout>
+        <StackLayout Margin="10,10,10,0">
+            <BoxView   VerticalOptions="Center"
+           HorizontalOptions="Center"
+           HeightRequest="1"
+           WidthRequest="380"  
+           Color="#bfbfbf"></BoxView>
+            <Label Text="Criar uma Página para uma celebridade, banda ou empresa." Margin="10,10,10,0"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
